@@ -8,61 +8,60 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 const TARGET = process.env.npm_lifecycle_event;
 
 var common = {
-        entry: "./src/index.jsx",
-        output: {
-            path: path.join(__dirname, './dist'),
-            //publicPath: '',
-            filename: 'bundle.js'
-        },
-        resolve: {
-            modules: [
-                path.join(__dirname, "./src"),
-                "node_modules"
-            ],
-            extensions: ['.js', '.jsx'],
-            enforceExtension: false
-        },
-
-        plugins: [
-            new webpack.NamedModulesPlugin(),
-            new HtmlWebpackPlugin({
-                template : './src/index.html',
-            }),
-
-            new CopyWebpackPlugin([
-                {
-                    from: 'public',
-                    to: path.join(__dirname, 'dist')
-                }
-            ])
-
+    entry: "./src/index.jsx",
+    output: {
+        path: path.join(__dirname, './dist'),
+        //publicPath: '',
+        filename: 'bundle.js'
+    },
+    resolve: {
+        modules: [
+            path.join(__dirname, "./src"),
+            "node_modules"
         ],
+        extensions: ['.js', '.jsx'],
+        enforceExtension: false
+    },
 
-        module: {
-            rules: [{
-                test: /\.js/,
-                exclude: /node_modules/,
-                loader: "babel-loader",
-                include: [__dirname],
+    plugins: [
+        new webpack.NamedModulesPlugin(),
+        new HtmlWebpackPlugin({
+            template: './src/index.html',
+        }),
+
+        new CopyWebpackPlugin([
+            {
+                from: 'public',
+                to: path.join(__dirname, 'dist')
+            }
+        ])
+
+    ],
+
+    module: {
+        rules: [{
+            test: /\.js/,
+            exclude: /node_modules/,
+            loader: "babel-loader",
+            include: [__dirname],
+            options: {
+                presets: ["es2015", "react", "stage-0"]
+            }
+        },
+        {
+            test: /\.css$/,
+            include: [path.join(__dirname, 'src')],
+            use: ['style-loader', {
+                loader: 'css-loader',
                 options: {
-                    presets: ["es2015", "react", "stage-0"]
-                }
-            },
-                {
-                    test : /\.css$/,
-                    include: [path.join(__dirname, 'src')],
-                    use : ['style-loader', {
-                        loader : 'css-loader',
-                        options : {
-                            modules : true,
-                            importLoaders : 1,
-                            localIdentName : '[path][name]__[local]--[hash:base64:5]',
-                        },
-                    }],
-                }
-            ]
-        }
+                    modules: true,
+                    importLoaders: 1,
+                    localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                },
+            }],
+        }]
     }
+}
 
 
 if (TARGET === 'start') {

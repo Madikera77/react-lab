@@ -8,7 +8,7 @@ export default class Footer extends React.Component {
         return (
             <div className={style.footer}>
                 <div>© SII CANADA. Tous droits réservés.</div>
-                <Link to="/">
+                <Link to="/about">
                     About
                 </Link>
             </div>

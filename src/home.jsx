@@ -1,13 +1,21 @@
 import React from 'react'
 
 import Card from './card'
+import List from './list'
 
 import style from './app.css'
 
 export default class Home extends React.Component {
-    render () {
+    constructor(props) {
+        super(props)
+    }
+
+    render() {
         return (
-            <Card firstname='Mad' lastname='Name' age='30' />
+            <div className={style.content}>
+                <Card />
+                <List />
+            </div>
         )
     }
 }
