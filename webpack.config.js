@@ -40,13 +40,15 @@ var common = {
 
     module: {
         rules: [{
-            test: /\.js/,
+            test: /\.(js|jsx)/,
             exclude: /node_modules/,
-            loader: "babel-loader",
+            use: [{
+                loader: "babel-loader",
+                options: {
+                    presets: ["es2015", "react", "stage-0"]
+                }
+            }, "eslint-loader"],
             include: [__dirname],
-            options: {
-                presets: ["es2015", "react", "stage-0"]
-            }
         },
         {
             test: /\.css$/,
@@ -68,7 +70,7 @@ if (TARGET === 'start') {
     console.log('Compiling front end code for dev ')
 
     //   Add Hot reload for dev env
-    common.module.rules[0].options.presets.push("react-hmre")
+    common.module.rules[0].use[0].options.presets.push("react-hmre")
 
     module.exports = merge(common, {
         mode: 'development',

@@ -1,0 +1,16 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "semi": ["error", "never"],
+    "no-console": "warn",
+    "react/no-array-index-key": "warn",
+    "react/jsx-one-expression-per-line": "never",
+    "jsx-a11y/click-events-have-key-events": "never",
+    "jsx-a11y/no-noninteractive-element-interactions": "never"
+  }
+}
