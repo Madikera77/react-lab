@@ -6,11 +6,29 @@
     "plugin:react/recommended"
   ],
   "rules": {
-    "semi": ["error", "never"],
+    "semi": [
+      "error",
+      "never"
+    ],
     "no-console": "warn",
-    "react/no-array-index-key": "warn",
+    "react/no-array-index-key": "never",
     "react/jsx-one-expression-per-line": "never",
     "jsx-a11y/click-events-have-key-events": "never",
-    "jsx-a11y/no-noninteractive-element-interactions": "never"
+    "jsx-a11y/no-noninteractive-element-interactions": "never",
+    "jsx-a11y/label-has-for": "never",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": [
+            "id"
+          ]
+        }
+      }
+    ]
+  },
+  "globals": {
+    "document": true,
+    "window": true
   }
 }

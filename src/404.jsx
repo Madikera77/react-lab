@@ -1,7 +1,13 @@
 import React from 'react'
+import styled from 'styled-components'
 
-import style from './app.css'
+const errorMessage = styled.div`
+  color: #f0f0f0;
+  font-size: 170px;
+  line-height: 1;
+  font-weight: 700;
+`
 
-const Page404 = () => <div className={style.errorMessage}>404</div>
+const Page404 = () => <errorMessage>404</errorMessage>
 
 export default Page404

@@ -3,7 +3,7 @@ import React from 'react'
 const defaultValue = {
   contacts: [],
   selected: 0,
-  company: 'SII CANADA',
+  mode: 'read',
   select: () => { },
   next: () => { },
   previous: () => { }

@@ -1,16 +1,33 @@
 import React from 'react'
+import styled from 'styled-components'
 
-import Card from './card'
+import ConsultantCard from './card/consultantCard'
 import List from './list'
+import Styled from './styled'
 
-import style from './app.css'
+const { Colors: { bluegrey }, Content, Section } = Styled
 
+const HomeSection = styled(Section)`
+  background: ${bluegrey};
+`
+const HomeContent = styled(Content)`
+  justify-content: space-between;
+  line-height: 1.4;
+`
+const CardStyled = styled(ConsultantCard)`
+  width: 60%;
+`
+const ListStyled = styled(List)`
+  width: 40%;
+`
 const Home = () => {
   return (
-    <div className={style.content}>
-      <Card />
-      <List />
-    </div>
+    <HomeSection>
+      <HomeContent>
+        <CardStyled />
+        <ListStyled />
+      </HomeContent>
+    </HomeSection>
   )
 }
 
